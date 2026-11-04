@@ -1,0 +1,37 @@
+{
+  "name": "P01-ANALISE-CREDITO-API-REGRAS",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.13-bookworm",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/P01-ANALISE-CREDITO-API-REGRAS,type=bind",
+  "workspaceFolder": "/workspaces/P01-ANALISE-CREDITO-API-REGRAS",
+  "features": {
+    "ghcr.io/devcontainers/features/aws-cli:1": {}
+  },
+  "containerEnv": {
+    "AWS_SHARED_CREDENTIALS_FILE": "/workspaces/P01-ANALISE-CREDITO-API-REGRAS/.local/aws/credentials",
+    "AWS_CONFIG_FILE": "/workspaces/P01-ANALISE-CREDITO-API-REGRAS/.local/aws/config",
+    "AWS_PAGER": "",
+    "PIP_CACHE_DIR": "/workspaces/P01-ANALISE-CREDITO-API-REGRAS/.local/pip-cache",
+    "PIP_DISABLE_PIP_VERSION_CHECK": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "forwardPorts": [8000],
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/workspaces/P01-ANALISE-CREDITO-API-REGRAS/.venv/bin/python",
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": ["tests"],
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.formatOnSave": true
+        }
+      }
+    }
+  }
+}

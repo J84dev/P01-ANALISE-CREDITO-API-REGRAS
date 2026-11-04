@@ -1,0 +1,4 @@
+# Dependências que vão dentro do pacote da Lambda.
+# Depois da primeira instalação, fixe as versões (pip freeze) para o build ser reproduzível.
+fastapi
+mangum

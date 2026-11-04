@@ -1,0 +1,43 @@
+{
+  "versao": "1.0.2",
+  "atualizado_em": "2026-11-01",
+  "descricao": "Motor de crédito principal para análise de risco PF",
+  "workflows":
+  [
+	  {
+		"WorkflowName": "MotorCredito",
+		"Rules": [
+		  {
+			"RuleName": "NaoAutorizado",
+			"Expression": "Idade < 18 || ScoreBureau < 300 || HistoricoInadimplencia36m > 2 || RendaMensal < (ValorSolicitado * 0.10)",
+			"SuccessEvent": "NAO_AUTORIZADO",
+			"ErrorMessage": "NAO_AUTORIZADO."
+		  },
+		  {
+			"RuleName": "Aprovado",
+			"Expression": "ScoreBureau >= 850 && TempoEmpregoMeses >= 24 && HistoricoInadimplencia36m == 0",
+			"SuccessEvent": "APROVADO",
+			"ErrorMessage": "APROVADO"
+		  },
+		  {
+			"RuleName": "BaixoRisco",
+			"Expression": "ScoreBureau >= 700 && TempoEmpregoMeses >= 12 && HistoricoInadimplencia36m == 0",
+			"SuccessEvent": "APROVADO_BAIXO_RISCO",
+			"ErrorMessage": "APROVADO_BAIXO_RISCO"
+		  },
+		  {
+			"RuleName": "MedioRisco",
+			"Expression": "ScoreBureau >= 500 && TempoEmpregoMeses >= 12 && HistoricoInadimplencia36m == 0",
+			"SuccessEvent": "PENDENTE_MEDIO_RISCO",
+			"ErrorMessage": "PENDENTE_MEDIO_RISCO"
+		  },
+		  {
+			"RuleName": "AltoRisco",
+			"Expression": "ScoreBureau >= 300",
+			"SuccessEvent": "PENDENTE_ALTO_RISCO",
+			"ErrorMessage": "PENDENTE_ALTO_RISCO"
+		  }
+		]
+	  }
+	]
+}

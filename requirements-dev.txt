@@ -1,0 +1,6 @@
+# Só para desenvolvimento. Não vai para o pacote da Lambda.
+-r requirements.txt
+uvicorn[standard]
+pytest
+httpx
+ruff
